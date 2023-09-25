@@ -1,16 +1,15 @@
 library(ggplot2)
 
-flnm <- paste("t_norm_energy.dat",sep="")
+flnm <- paste("dataset_fermi.dat",sep="")
 
 d <- read.table(flnm)
 
-V1 <- d$V1
-V2 <- d$V2
-V3 <- d$V3
+x <- d$V1
+y1 <- d$V2
+y2 <- d$V3
+y3 <- d$V4
 
-len <- length(V1)
-
-V3 <- V3/V3[1]
+len <- length(x)
 
 #Create a new data frame with "long form" like this:
 
@@ -27,12 +26,16 @@ V3 <- V3/V3[1]
 
 #This is how ggplot2 works
 
-d1 <- data.frame(x = c(V1, V1), f = c(V2, V3), group = c(rep("Norm",len),rep("Energy",len)))
+d1 <- data.frame(x = c(x, x, x), f = c(y1, y2, y3), 
+    group = c(rep("kT = 0",len),rep("kT = 0.1",len),rep("kT = 0.2",len)))
 
 #Create the plot
-g <- ggplot(d1, aes(x = x, y = f, colour = group)) +
+g <- ggplot(d1, aes(x = x, y = f, colour = group, linetype = group)) +
 #Draw lines
-geom_line(linewidth=0.5) + 
+geom_line(linewidth=0.7) + 
+#Choose colors and linetypes manually. Can delete the next two lines, then ggplot will pick.
+scale_color_manual(values = c("black", "blue", "red")) +
+scale_linetype_manual(values = c("dashed", "solid", "longdash")) +
 #Draw points
 #geom_point(size = 2.5) +
 #Plot style parameters
@@ -44,21 +47,21 @@ theme(
     ) + 
 #Legend parameters
 theme(legend.title = element_blank(), legend.text = element_text(size = 14), legend.background = element_rect(colour = "black", fill = "white", linewidth = 0.3)) + 
-theme(legend.position = c(0.7, 0.5), legend.spacing.y = unit(5, "pt"), legend.margin=margin(t=0,l=10,b=8,r=10, unit='pt')) + 
+theme(legend.position = c(0.8, 0.8), legend.spacing.y = unit(5, "pt"), legend.margin=margin(t=0,l=10,b=8,r=10, unit='pt')) + 
 guides(colour = guide_legend(byrow = TRUE)) +
 #Axes labels
-labs(x = "Time, 1/eV", y = expression(paste("Results, a.u.")))
+labs(x = "Energy, a.u.", y = expression(paste("Fermi distribution")))
 
 #Show the plot on screen
 g
 
 #Export the plot
 
-flnm <- paste("t_norm_energy.png",sep="")
+flnm <- paste("plot_fermi_2.png",sep="")
 
 ggsave(flnm, scale = 1, width = 6, height = 5)
 
-flnm <- paste("t_norm_energy.pdf",sep="")
+flnm <- paste("plot_fermi_2.pdf",sep="")
 
 ggsave(flnm, scale = 1, width = 6, height = 5)
 

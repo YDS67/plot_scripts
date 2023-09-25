@@ -34,12 +34,12 @@ plot(x, y1, type = "l", ylim = c(y_min, y_max),
 lines(x, y2, lwd = line_width, col = cols[2], lty = ltys[2])
 lines(x, y3, lwd = line_width, col = cols[3], lty = ltys[3])
 
-legend(x_min + x_length*0.6, y_max - y_height*0.05, 
+legend(x_min + x_length*0.7, y_max - y_height*0.05, 
     legend = c("kT = 0", "kT = 0.1", "kT = 0.2"), 
     lwd = rep(line_width, 3), 
     lty = ltys, 
     col = cols, 
-    cex = 1.2)
+    cex = 1.3)
 
 dev.off()
 
@@ -57,7 +57,7 @@ plot(x, y1, type = "l", ylim = c(y_min, y_max),
 lines(x, y2, lwd = line_width, col = cols[2], lty = ltys[2])
 lines(x, y3, lwd = line_width, col = cols[3], lty = ltys[3])
 
-legend(x_min + x_length*0.6, y_max - y_height*0.05, 
+legend(x_min + x_length*0.7, y_max - y_height*0.05, 
     legend = c("kT = 0", "kT = 0.1", "kT = 0.2"), 
     lwd = rep(line_width, 3), 
     lty = ltys, 
