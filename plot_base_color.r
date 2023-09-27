@@ -20,9 +20,9 @@ ltys <- c(2, 1, 5)
 
 filename <- "plot_fermi_1"
 
-png(paste(filename, ".png", sep = ""), width = 1200, height = 1000, units = "px", pointsize = 30)
-par(mar = c(3.2, 3.2, 0.6, 0.6), mgp = c(1.7, 0.5, 0), lwd = 3)
-line_width <- 5
+png(paste(filename, ".png", sep = ""), width = 1800, height = 1500, units = "px", pointsize = 45)
+par(mar = c(3.2, 3.2, 0.6, 0.6), mgp = c(1.7, 0.5, 0), lwd = 4)
+line_width <- 7
 
 plot(x, y1, type = "l", ylim = c(y_min, y_max), 
     lwd = line_width, 

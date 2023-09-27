@@ -46,8 +46,12 @@ theme(
     axis.text.y = element_text(colour = "black", angle = 90, hjust = 0.5)
     ) + 
 #Legend parameters
-theme(legend.title = element_blank(), legend.text = element_text(size = 14), legend.background = element_rect(colour = "black", fill = "white", linewidth = 0.3)) + 
-theme(legend.position = c(0.8, 0.8), legend.spacing.y = unit(5, "pt"), legend.margin=margin(t=0,l=10,b=8,r=10, unit='pt')) + 
+theme(legend.title = element_blank(), legend.text = element_text(size = 14), 
+    legend.background = element_rect(colour = "black", fill = "white", linewidth = 0.3),
+    legend.key.width = unit(2.5, "line")) + 
+theme(legend.position = c(0.8, 0.8), 
+    legend.spacing.y = unit(3, "pt"), legend.margin=margin(t=3,l=10,b=7,r=10, unit='pt')
+) + 
 guides(colour = guide_legend(byrow = TRUE)) +
 #Axes labels
 labs(x = "Energy, a.u.", y = expression(paste("Fermi distribution")))
