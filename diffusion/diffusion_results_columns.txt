@@ -1,0 +1,6 @@
+"x"
+"1" "Z grid for finite difference"
+"2" "Exact density values"
+"3" "Finite difference density values"
+"4" "Z grid for random walk"
+"5" "Random walk density values"

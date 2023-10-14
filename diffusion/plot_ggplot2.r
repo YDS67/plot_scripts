@@ -1,15 +1,22 @@
+# You need this package!
+# if you don't have it, run the code
+# install.packages("ggplot2")
+
 library(ggplot2)
 
-flnm <- paste("dataset_fermi.dat",sep="")
+data1 <- read.table("diffusion_results_FD.dat")
+data2 <- read.table("diffusion_results_RW.dat")
 
-d <- read.table(flnm)
+x1 <- data1$V1
+y1 <- data1$V2
+y2 <- data1$V3
+x2 <- data2$V1
+y3 <- data2$V2
 
-x <- d$V1
-y1 <- d$V2
-y2 <- d$V3
-y3 <- d$V4
+nms <- c("Exact formula", "Finite difference", "Random walk")
 
-len <- length(x)
+len1 <- length(x1)
+len2 <- length(x2)
 
 #Create a new data frame with "long form" like this:
 
@@ -26,18 +33,19 @@ len <- length(x)
 
 #This is how ggplot2 works
 
-d1 <- data.frame(x = c(x, x, x), f = c(y1, y2, y3), 
-    group = c(rep("kT = 0",len),rep("kT = 0.1",len),rep("kT = 0.2",len)))
+d1 <- data.frame(x = c(x1, x1, x2), f = c(y1, y2, y3), 
+    group = c(rep(nms[1], len1), rep(nms[2], len1), rep(nms[3], len2)))
 
 #Create the plot
-g <- ggplot(d1, aes(x = x, y = f, colour = group, linetype = group)) +
+g <- ggplot(d1, aes(x = x, y = f, colour = group, linetype = group, shape = group)) +
 #Draw lines
 geom_line(linewidth=0.7) + 
 #Choose colors and linetypes manually. Can delete the next two lines, then ggplot will pick.
-scale_color_manual(values = c("black", "blue", "red")) +
-scale_linetype_manual(values = c("dashed", "solid", "longdash")) +
+scale_color_manual(values = c("blue", "red", "black")) +
+scale_linetype_manual(values = c("solid", "dashed", "blank")) +
 #Draw points
-#geom_point(size = 2.5) +
+geom_point(size = 2.5) +
+scale_shape_manual(values = c(NA, NA, 16)) +
 #Plot style parameters
 theme_bw(base_size = 14) + 
 theme(
@@ -46,26 +54,27 @@ theme(
     axis.text.y = element_text(colour = "black", angle = 90, hjust = 0.5)
     ) + 
 #Legend parameters
-theme(legend.title = element_blank(), legend.text = element_text(size = 14), 
+theme(legend.title = element_blank(), legend.text = element_text(size = 12), 
     legend.background = element_rect(colour = "black", fill = "white", linewidth = 0.3),
     legend.key.width = unit(2.5, "line")) + 
-theme(legend.position = c(0.8, 0.8), 
+theme(legend.position = c(0.985, 0.87), 
+    legend.justification = "right",
     legend.spacing.y = unit(3, "pt"), legend.margin=margin(t=3,l=10,b=7,r=10, unit='pt')
 ) + 
 guides(colour = guide_legend(byrow = TRUE)) +
 #Axes labels
-labs(x = "Energy, a.u.", y = expression(paste("Fermi distribution")))
+labs(x = "z, cm", y = "Number of particles")
 
 #Show the plot on screen
 g
 
 #Export the plot
 
-flnm <- paste("plot_fermi_2.png",sep="")
+flnm <- paste("plot_diffusion_2.png",sep="")
 
 ggsave(flnm, scale = 1, width = 6, height = 5)
 
-flnm <- paste("plot_fermi_2.pdf",sep="")
+flnm <- paste("plot_diffusion_2.pdf",sep="")
 
 ggsave(flnm, scale = 1, width = 6, height = 5)
 

@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\usepackage{tikz}
+\begin{document}
+\begin{figure}
+    \centering
+    % The output from tikz()
+    % is imported here.
+    \input{plot_diffusion_3.tex}
+    \caption{This is an R plot}
+\end{figure}
+\end{document}
