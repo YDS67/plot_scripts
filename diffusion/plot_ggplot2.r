@@ -4,8 +4,8 @@
 
 library(ggplot2)
 
-data1 <- read.table("diffusion_results_FD.dat")
-data2 <- read.table("diffusion_results_RW.dat")
+data1 <- read.table("data/diffusion_results_FD.dat")
+data2 <- read.table("data/diffusion_results_RW.dat")
 
 x1 <- data1$V1
 y1 <- data1$V2
@@ -70,12 +70,10 @@ g
 
 #Export the plot
 
-flnm <- paste("plot_diffusion_2.png",sep="")
+flnm <- "images/plot_diffusion_2"
 
-ggsave(flnm, scale = 1, width = 6, height = 5)
+ggsave(paste(flnm, ".png", sep=""), scale = 1, width = 6, height = 5)
 
-flnm <- paste("plot_diffusion_2.pdf",sep="")
-
-ggsave(flnm, scale = 1, width = 6, height = 5)
+ggsave(paste(flnm, ".pdf", sep=""), scale = 1, width = 6, height = 5)
 
 

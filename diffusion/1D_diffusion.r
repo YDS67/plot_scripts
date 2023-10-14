@@ -134,28 +134,11 @@ nq <- nq1
 FD_data <- data.frame(zj, n_exact(zj, T), nq)
 RW_data <- data.frame(zk, nk)
 
-write.table(FD_data, "diffusion_results_FD.dat", col.names = FALSE, row.names = FALSE)
-write.table(RW_data, "diffusion_results_RW.dat", col.names = FALSE, row.names = FALSE)
+write.table(FD_data, "data/diffusion_results_FD.dat", col.names = FALSE, row.names = FALSE)
+write.table(RW_data, "data/diffusion_results_RW.dat", col.names = FALSE, row.names = FALSE)
 
 #================================
 # Построение графиков
 #================================
 
-# Не строим график, для этого есть отдельный скрипт
-
-if (FALSE) {
-nmax <- max(nk, nq)
-line_width <- 3
-
-# Рисуем график позиций частиц на оси x
-# Укажите имя файла и размеры
-#pdf("my_plot.pdf", width = 8, height = 6)  
-plot(zk, nk, xlim = c(-a-1, a+1), ylim = c(0, nmax), col = "black", pch = 16,
-  xlab = "Положение (единицы)", ylab = "Количество частиц")
-
-lines(zj, nq, type="l", col="blue", lty = 4, lwd = line_width)
-
-lines(zj, n_exact(zj, T), col="red", lty = 2, lwd = line_width)
-#dev.off()
-}
-
+# Не строим график, для этого есть отдельные скрипты

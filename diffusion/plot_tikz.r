@@ -9,8 +9,8 @@ library(tikzDevice)
 
 
 
-data1 <- read.table("diffusion_results_FD.dat")
-data2 <- read.table("diffusion_results_RW.dat")
+data1 <- read.table("data/diffusion_results_FD.dat")
+data2 <- read.table("data/diffusion_results_RW.dat")
 
 x1 <- data1$V1
 y1 <- data1$V2
@@ -33,7 +33,7 @@ ltys <- c(1, 2, 0)
 pchs <- c(NA, NA, 16)
 txtsize <- 1.5
 
-filename <- "plot_diffusion_3"
+filename <- "tex/plot_diffusion_3"
 
 tikz(paste(filename, ".tex", sep = ""), width = 6, height = 5)
 par(mar = c(3.2, 3.2, 0.6, 0.6), mgp = c(1.7, 0.5, 0), lwd = 1)
@@ -41,7 +41,7 @@ line_width <- 5
 psz <- 1
 
 plot(x1, y1, type = "l",
-    xlim = c(x_min - x_length*0.1, x_max + x_length*0.1),
+    xlim = c(x_min, x_max),
     ylim = c(y_min, y_max + y_height*0.1), 
     lwd = line_width, 
     col = cols[1],
@@ -61,7 +61,7 @@ legend("topright", inset = 0.02,
     col = cols, 
     cex = 1.3)
 
-text(x = x_min - x_length*0.1, 
+text(x = x_min, 
     y = y_max,
     cex = txtsize,
     pos = 4,

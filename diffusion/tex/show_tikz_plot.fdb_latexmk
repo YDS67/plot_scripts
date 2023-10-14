@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1697315983 "/home/yds/Documents/GitHub/plot_scripts/diffusion/show_tikz_plot.tex" "show_tikz_plot.pdf" "show_tikz_plot" 1697315983
+["pdflatex"] 1697317016 "/home/yds/Documents/GitHub/plot_scripts/diffusion/tex/show_tikz_plot.tex" "show_tikz_plot.pdf" "show_tikz_plot" 1697317017
   "/etc/texmf/web2c/texmf.cnf" 1694963912 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/yds/Documents/GitHub/plot_scripts/diffusion/show_tikz_plot.tex" 1697315734 326 daa06b1fe634869fa1427fdab463ba12 ""
+  "/home/yds/Documents/GitHub/plot_scripts/diffusion/tex/show_tikz_plot.tex" 1697315734 326 daa06b1fe634869fa1427fdab463ba12 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
@@ -91,8 +91,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1697306444 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1697306475 2799566 e8302b2323ec1af25d35fb977e55e917 ""
-  "plot_diffusion_3.tex" 1697315979 14215 5f51362d76be382d6c8465ae2333e322 ""
-  "show_tikz_plot.aux" 1697315983 152 ae9389977d678daf0f1197acba19aeec "pdflatex"
+  "plot_diffusion_3.tex" 1697317012 14215 28376ccd66273703710535a146731aa5 ""
+  "show_tikz_plot.aux" 1697317016 152 ae9389977d678daf0f1197acba19aeec "pdflatex"
   "show_tikz_plot.tex" 1697315734 326 daa06b1fe634869fa1427fdab463ba12 ""
   (generated)
   "show_tikz_plot.aux"

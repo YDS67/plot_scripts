@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.14)  14 OCT 2023 23:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.10.14)  14 OCT 2023 23:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/yds/Documents/GitHub/plot_scripts/diffusion/show_tikz_plot.tex
-(/home/yds/Documents/GitHub/plot_scripts/diffusion/show_tikz_plot.tex
+**/home/yds/Documents/GitHub/plot_scripts/diffusion/tex/show_tikz_plot.tex
+(/home/yds/Documents/GitHub/plot_scripts/diffusion/tex/show_tikz_plot.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -334,14 +334,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./show_tikz_plot.aux) ) 
 Here is how much of TeX's memory you used:
  12312 strings out of 478287
- 255643 string characters out of 5849288
- 554228 words of memory out of 5000000
+ 255655 string characters out of 5849288
+ 554136 words of memory out of 5000000
  30329 multiletter control sequences out of 15000+600000
  469259 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,8n,104p,461b,754s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 100i,8n,104p,465b,754s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on show_tikz_plot.pdf (1 page, 60561 bytes).
+Output written on show_tikz_plot.pdf (1 page, 60622 bytes).
 PDF statistics:
  36 PDF objects out of 1000 (max. 8388607)
  22 compressed objects within 1 object stream

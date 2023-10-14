@@ -4,8 +4,8 @@
 # "bottomright", "bottom", "bottomleft", "left", "topleft", "top", "topright", "right" and "center".
 # The parameter inset is used to create margins
 
-data1 <- read.table("diffusion_results_FD.dat")
-data2 <- read.table("diffusion_results_RW.dat")
+data1 <- read.table("data/diffusion_results_FD.dat")
+data2 <- read.table("data/diffusion_results_RW.dat")
 
 x1 <- data1$V1
 y1 <- data1$V2
@@ -27,7 +27,7 @@ cols <- c("blue", "red", "black")
 ltys <- c(1, 2, 0)
 pchs <- c(NA, NA, 16)
 
-filename <- "plot_diffusion_1"
+filename <- "images/plot_diffusion_1"
 
 png(paste(filename, ".png", sep = ""), width = 1800, height = 1500, units = "px", pointsize = 45)
 par(mar = c(3.2, 3.2, 0.6, 0.6), mgp = c(1.7, 0.5, 0), lwd = 4)
@@ -35,7 +35,7 @@ line_width <- 7
 psz <- 1
 
 plot(x1, y1, type = "l",
-    xlim = c(x_min - x_length*0.1, x_max + x_length*0.1),
+    xlim = c(x_min, x_max),
     ylim = c(y_min, y_max + y_height*0.1), 
     lwd = line_width, 
     col = cols[1],
@@ -62,7 +62,7 @@ line_width <- 2
 psz <- 0.7
 
 plot(x1, y1, type = "l",
-    xlim = c(x_min - x_length*0.1, x_max + x_length*0.1),
+    xlim = c(x_min, x_max),
     ylim = c(y_min, y_max + y_height*0.1), 
     lwd = line_width, 
     col = cols[1],
