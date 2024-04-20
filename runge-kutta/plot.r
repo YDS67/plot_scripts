@@ -27,6 +27,8 @@ x_length <- x_max-x_min
 z_max <- max(z1,z2,z3)
 z_min <- min(z1,z2,z3)
 
+number_of_lines <- 3
+
 cols <- c("#0092cc", "#ff3333", "#22af4b")
 ltys <- c(1, 1, 1)
 pchs <- c(NA, NA, NA)
@@ -70,7 +72,7 @@ lines(x1, z3, lwd = line_width, col = cols[3], lty = ltys[3])
 
 legend("topleft", inset = 0.02, 
     legend = nms, 
-    lwd = rep(line_width, 3), 
+    lwd = rep(line_width, number_of_lines), 
     lty = ltys,
     pch = pchs, 
     col = cols, 
