@@ -43,7 +43,7 @@ filename <- paste("dp_energy", sep="")
 
 png(paste(filename, ".png", sep = ""), width = 2000, height = 2000, units = "px", pointsize = 45)
 # par(mar = c(bottom, left, top, right))
-par(mar = c(4.0, 4.2, 3.2, 0.6), mgp = c(2.5, 0.6, 0), lwd = lwd_main, 
+par(mar = c(4.0, 4.2, 3.2, 0.6), mgp = c(2.5, 0.6, 0), lwd = lwd_main, family = "Times",
     bg = "#ffffff", col = col_main, col.lab = col_main, col.axis = col_main, col.main = col_main)
 
 line_width <- 9
