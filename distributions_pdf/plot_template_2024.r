@@ -87,16 +87,13 @@ p3 <- d$V3
 #===================
 # Plot parameters general
 #===================
+width = 6
+height = 4
 col_main <- "#282828"
-lwd_main <- 5
-axis_label_size <- 1.8
-legend_font_size <- 1.5
-tick_font_size <- 1.3
-title_font_size <- 1.5
 lwd_main <- 1
-axis_label_size <- 14/12
-legend_font_size <- 14/12
-tick_font_size <- 1
+axis_label_size <- 1
+legend_font_size <- 1
+tick_font_size <- 11/12
 title_font_size <- 14/12
 line_width <- 2
 psz <- 1
@@ -107,7 +104,7 @@ filename <- paste("Distributions_compare", sep="")
 x_name <- "x, усл.ед."
 y_name <- "Распределение, норм."
 number_of_lines <- 3
-nms <- c("Lorenz","Gauss","Sech")
+nms <- c("Лоренц","Гаусс","1/cosh")
 cols <- c("#0092cc", "#ff3333", "#22af4b")
 ltys <- c(1, 1, 1)
 pchs <- c(NA, NA, NA)
@@ -115,7 +112,7 @@ x_min <- min(xe)
 x_max <- max(xe)
 y_min <- min(ye1,ye2,ye3)
 y_max <- max(ye1,ye2,ye3)
-cairo_pdf(paste(filename, ".pdf", sep = ""), width = 6, height = 4)
+cairo_pdf(paste(filename, ".pdf", sep = ""), width = width, height = height)
 # par(mar = c(bottom, left, top, right))
 par(mar = c(3.5, 3.5, 0.6, 0.6), mgp = c(2, 0.6, 0), lwd = lwd_main,
     bg = "#ffffff", col = col_main, col.lab = col_main, 
@@ -158,7 +155,7 @@ filename <- paste("Lorenz_distribution", sep="")
 x_name <- "x, усл.ед."
 y_name <- "Распределение, норм."
 number_of_lines <- 2
-nms <- c("Exact","Approximate")
+nms <- c("Точная формула","Случ. выборка")
 cols <- c("#0092cc", "#ff3333")
 ltys <- c(1, NA)
 pchs <- c(NA, 16)
@@ -166,7 +163,7 @@ x_min <- min(xe)
 x_max <- max(xe)
 y_min <- min(ye1)
 y_max <- max(ye1)
-cairo_pdf(paste(filename, ".pdf", sep = ""), width = 6, height = 4)
+cairo_pdf(paste(filename, ".pdf", sep = ""), width = width, height = height)
 # par(mar = c(bottom, left, top, right))
 par(mar = c(3.5, 3.5, 0.6, 0.6), mgp = c(2, 0.6, 0), lwd = lwd_main,
     bg = "#ffffff", col = col_main, col.lab = col_main, 
@@ -188,7 +185,7 @@ axis(2, col.ticks = col_main, lwd = lwd_main, lwd.ticks = lwd_main, col = col_ma
 grid(nx = 5, ny = 5, col = "lightgray", lty = 2, lwd = 0.5*line_width, equilogs = FALSE)
 
 lines(xe, ye1, lwd = line_width, col = cols[1], lty = ltys[1])
-points(xa, ya1, cex = 1, col = cols[2], pch = pchs[2])
+points(xa, ya1, cex = psz, col = cols[2], pch = pchs[2])
 
 legend("topright", inset = 0.02, 
     legend = nms, 
@@ -208,11 +205,11 @@ filename <- paste("Lorenz_distribution_hist", sep="")
 x_name <- "x, усл.ед."
 y_name <- "Распределение, норм."
 number_of_lines <- 1
-nms <- c("Exact")
+nms <- c("Точная формула")
 cols <- c("#22af4b")
 ltys <- c(1)
 pchs <- c(NA)
-cairo_pdf(paste(filename, ".pdf", sep = ""), width = 6, height = 4)
+cairo_pdf(paste(filename, ".pdf", sep = ""), width = width, height = height)
 # par(mar = c(bottom, left, top, right))
 par(mar = c(3.5, 3.5, 0.6, 0.6), mgp = c(2, 0.6, 0), lwd = lwd_main,
     bg = "#ffffff", col = col_main, col.lab = col_main, 
@@ -253,7 +250,7 @@ filename <- paste("Gauss_distribution", sep="")
 x_name <- "x, усл.ед."
 y_name <- "Распределение, норм."
 number_of_lines <- 2
-nms <- c("Exact","Approximate")
+nms <- c("Точная формула","Случ. выборка")
 cols <- c("#0092cc", "#ff3333")
 ltys <- c(1, NA)
 pchs <- c(NA, 16)
@@ -261,7 +258,7 @@ x_min <- min(xe)
 x_max <- max(xe)
 y_min <- min(ye2)
 y_max <- max(ye2)
-cairo_pdf(paste(filename, ".pdf", sep = ""), width = 6, height = 4)
+cairo_pdf(paste(filename, ".pdf", sep = ""), width = width, height = height)
 # par(mar = c(bottom, left, top, right))
 par(mar = c(3.5, 3.5, 0.6, 0.6), mgp = c(2, 0.6, 0), lwd = lwd_main,
     bg = "#ffffff", col = col_main, col.lab = col_main, 
@@ -283,7 +280,7 @@ axis(2, col.ticks = col_main, lwd = lwd_main, lwd.ticks = lwd_main, col = col_ma
 grid(nx = 5, ny = 5, col = "lightgray", lty = 2, lwd = 0.5*line_width, equilogs = FALSE)
 
 lines(xe, ye2, lwd = line_width, col = cols[1], lty = ltys[1])
-points(xa, ya2, cex = 1, col = cols[2], pch = pchs[2])
+points(xa, ya2, cex = psz, col = cols[2], pch = pchs[2])
 
 legend("topright", inset = 0.02, 
     legend = nms, 
@@ -303,11 +300,11 @@ filename <- paste("Gauss_distribution_hist", sep="")
 x_name <- "x, усл.ед."
 y_name <- "Распределение, норм."
 number_of_lines <- 1
-nms <- c("Exact")
+nms <- c("Точная формула")
 cols <- c("#22af4b")
 ltys <- c(1)
 pchs <- c(NA)
-cairo_pdf(paste(filename, ".pdf", sep = ""), width = 6, height = 4)
+cairo_pdf(paste(filename, ".pdf", sep = ""), width = width, height = height)
 # par(mar = c(bottom, left, top, right))
 par(mar = c(3.5, 3.5, 0.6, 0.6), mgp = c(2, 0.6, 0), lwd = lwd_main,
     bg = "#ffffff", col = col_main, col.lab = col_main, 
@@ -349,7 +346,7 @@ filename <- paste("Sech_distribution", sep="")
 x_name <- "x, усл.ед."
 y_name <- "Распределение, норм."
 number_of_lines <- 2
-nms <- c("Exact","Approximate")
+nms <- c("Точная формула","Случ. выборка")
 cols <- c("#0092cc", "#ff3333")
 ltys <- c(1, NA)
 pchs <- c(NA, 16)
@@ -357,7 +354,7 @@ x_min <- min(xe)
 x_max <- max(xe)
 y_min <- min(ye3)
 y_max <- max(ye3)
-cairo_pdf(paste(filename, ".pdf", sep = ""), width = 6, height = 4)
+cairo_pdf(paste(filename, ".pdf", sep = ""), width = width, height = height)
 # par(mar = c(bottom, left, top, right))
 par(mar = c(3.5, 3.5, 0.6, 0.6), mgp = c(2, 0.6, 0), lwd = lwd_main,
     bg = "#ffffff", col = col_main, col.lab = col_main, 
@@ -379,7 +376,7 @@ axis(2, col.ticks = col_main, lwd = lwd_main, lwd.ticks = lwd_main, col = col_ma
 grid(nx = 5, ny = 5, col = "lightgray", lty = 2, lwd = 0.5*line_width, equilogs = FALSE)
 
 lines(xe, ye3, lwd = line_width, col = cols[1], lty = ltys[1])
-points(xa, ya3, cex = 1, col = cols[2], pch = pchs[2])
+points(xa, ya3, cex = psz, col = cols[2], pch = pchs[2])
 
 legend("topright", inset = 0.02, 
     legend = nms, 
@@ -399,11 +396,11 @@ filename <- paste("Sech_distribution_hist", sep="")
 x_name <- "x, усл.ед."
 y_name <- "Распределение, норм."
 number_of_lines <- 1
-nms <- c("Exact")
+nms <- c("Точная формула")
 cols <- c("#22af4b")
 ltys <- c(1)
 pchs <- c(NA)
-cairo_pdf(paste(filename, ".pdf", sep = ""), width = 6, height = 4)
+cairo_pdf(paste(filename, ".pdf", sep = ""), width = width, height = height)
 # par(mar = c(bottom, left, top, right))
 par(mar = c(3.5, 3.5, 0.6, 0.6), mgp = c(2, 0.6, 0), lwd = lwd_main,
     bg = "#ffffff", col = col_main, col.lab = col_main, 
