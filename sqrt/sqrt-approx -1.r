@@ -1,4 +1,4 @@
-a <- exp(1)
+a <- exp(-1)
 b <- pi
 exact <- function(x){
     sqrt(x+1i*a)/sqrt(x+1i*b)
@@ -6,14 +6,18 @@ exact <- function(x){
 appr <- function(x){
     (4*x+1i*(3*a+b))/(4*x+1i*(3*b+a))
 }
+dif <- function(x){
+    -1/32*(a-b)^3/x^3*(1i+(a+2*b)/x)
+}
 
-xmin <- -10
-xmax <- 10
-Nx <- 200
+xmin <- -20
+xmax <- 20
+Nx <- 1000
 x <- xmin + (xmax-xmin)*(1:Nx-1/2)/Nx
 
 ex <- exact(x)
 ax <- appr(x)
+dx <- dif(x)
 
 
 #===================
@@ -36,13 +40,15 @@ psz <- 1
 x <- x
 y1 <- Re(ex-ax)
 y2 <- Im(ex-ax)
+y3 <- Re(dx)
+y4 <- Im(dx)
 filename <- paste("sqrt-approx", sep="")
 x_name <- "x"
 y_name <- "f(x)"
-number_of_lines <- 2
-mains <- expression(sqrt((x+i*e)/(x+i*pi))-(4*x+i*(3*e+pi))/(4*x+i*(e+3*pi)))
-nms <- c("Re","Im")
-cols <- c("#0092cc", "#ff3333", "#0092cc", "#ff3333", "#22af4b")
+number_of_lines <- 4
+mains <- expression(sqrt((x+i/e)/(x+i*pi))-(4*x+i*(3/e+pi))/(4*x+i*(1/e+3*pi)))
+nms <- c("Re","Im", expression(Re(A/x^3+B/x^4)), expression(Im(A/x^3+B/x^4)))
+cols <- c("#0092cc", "#ff3333", "#22af4b", "#888888")
 ltys <- c(1, 1, 2, 2)
 pchs <- c(NA, NA, NA, NA)
 x_min <- min(x)
@@ -75,6 +81,11 @@ grid(nx = 5, ny = 5, col = "lightgray", lty = 2, lwd = 0.5*line_width, equilogs 
 
 lines(x, y1, lwd = line_width, col = cols[1], lty = ltys[1])
 lines(x, y2, lwd = line_width, col = cols[2], lty = ltys[2])
+lines(x, y3, lwd = line_width, col = cols[3], lty = ltys[3])
+lines(x, y4, lwd = line_width, col = cols[4], lty = ltys[4])
+
+abline(v = 3*abs(a-b), lwd = line_width, col = "black", lty = 3)
+abline(v = -3*abs(a-b), lwd = line_width, col = "black", lty = 3)
 
 legend("topleft", inset = 0.02, 
     legend = nms, 
