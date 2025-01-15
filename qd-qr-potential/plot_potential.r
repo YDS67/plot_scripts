@@ -6,13 +6,13 @@
 
 tol <- 1e-9
 
-a <- 30
-a1 <- 40
-b1 <- 15
+a <- 15
+a1 <- 20
+b1 <- 8
 R <- 2*a1*b1*sqrt((log(a1)-log(b1))/(a1^2-b1^2))
 A <- (1+R^2/a1^2)*exp(-R^2/a1^2) - (1+R^2/b1^2)*exp(-R^2/b1^2)
 
-xmax <- 100
+xmax <- 50
 Nx <- 1000
 
 x <- -xmax + (1:Nx)/Nx*2*xmax
@@ -21,15 +21,15 @@ y <- x
 UQD <- function(x, y){(1+x^2/a^2+y^2/a^2)*exp(-x^2/a^2-y^2/a^2)}
 UQR <- function(x, y){((1+x^2/a1^2+y^2/a1^2)*exp(-x^2/a1^2-y^2/a1^2) - (1+x^2/b1^2+y^2/b1^2)*exp(-x^2/b1^2-y^2/b1^2))/A}
 
-z1 <- UQD(x,0)*(-1)
-z2 <- UQR(x,0)*(-1)
+z1 <- UQD(x,0)
+z2 <- UQR(x,0)
 
 u1 <- outer(x,y,FUN = UQD)
 u2 <- outer(x,y,FUN = UQR)
 
 #=========================================
 
-nms <- c("QD","QR")
+nms <- c("КТ","КК")
 
 x_max <- max(x)
 x_min <- min(x)
@@ -63,9 +63,9 @@ psz <- 1
 
 plot(0, 0, pch = NA, # log = "y",
     xlim = c(x_min, x_max), ylim = c(z_min, z_max), 
-    xlab = "x, nm", 
-    ylab = "U(x,0), a.u.", 
-    main = paste("QR radius is ", format(R, digits=4), " nm"),
+    xlab = "x, нм", 
+    ylab = "z(x,0), a.u.", 
+    main = paste("Радиус КК: ", format(R, digits=2), " нм"),
     cex.axis = tick_font_size,
     cex.main = title_font_size,
     cex.lab = axis_label_size)
@@ -99,8 +99,8 @@ line_width <- 9
 psz <- 1
 
 image(x, y, u1,
-    xlab = "x, nm", 
-    ylab = "y, nm", 
+    xlab = "x, нм", 
+    ylab = "y, нм", 
     cex.axis = tick_font_size,
     cex.main = title_font_size,
     cex.lab = axis_label_size,
@@ -122,8 +122,8 @@ line_width <- 9
 psz <- 1
 
 image(x, y, u2,
-    xlab = "x, nm", 
-    ylab = "y, nm", 
+    xlab = "x, нм", 
+    ylab = "y, нм", 
     cex.axis = tick_font_size,
     cex.main = title_font_size,
     cex.lab = axis_label_size,
@@ -141,9 +141,9 @@ nms <- c("КТ","КК")
 
 lwd_main <- 1
 axis_label_size <- 14/12
-legend_font_size <- 14/12
+legend_font_size <- 12/12
 tick_font_size <- 1
-title_font_size <- 14/12
+title_font_size <- 12/12
 
 filename <- paste("qd_qr_potential_", sep="")
 
@@ -158,8 +158,8 @@ psz <- 1
 plot(0, 0, pch = NA, # log = "y",
     xlim = c(x_min, x_max), ylim = c(z_min, z_max), 
     xlab = "x, нм", 
-    ylab = expression(paste("U(x,0)/", U[0])), 
-    main = paste("Радиус КК ", format(R, digits=4), " нм"),
+    ylab = expression(paste("z(x,0)/", z[0])), 
+    main = paste("Радиус КК: ", format(R, digits=2), " нм"),
     cex.axis = tick_font_size,
     cex.main = title_font_size,
     cex.lab = axis_label_size)
@@ -172,7 +172,7 @@ grid(nx = 10, ny = 10, col = "lightgray", lty = 2, lwd = 0.5*line_width, equilog
 lines(x, z1, lwd = line_width, col = cols[1], lty = ltys[1])
 lines(x, z2, lwd = line_width, col = cols[2], lty = ltys[2])
 
-legend("bottomright", inset = 0.02, 
+legend("topright", inset = 0.02, 
     legend = nms, 
     lwd = rep(line_width, number_of_lines), 
     lty = ltys,
