@@ -2,6 +2,7 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import pars
 import numpy as np
+import time
 
 # Read the file
 data = np.loadtxt('data/taylor.dat')
@@ -12,19 +13,6 @@ y3 = data[:, 3]
 y4 = data[:, 4]
 y5 = data[:, 5]
 
-# import math
-# n = 250
-# x_min = 0.0
-# x_max = 3.0
-# dx = (x_max - x_min) / n
-# x = [i * dx + x_min for i in range(n)]
-
-# y1 = [math.cos(val**2) for val in x]
-# y2 = [1.0 - val**4 / 2.0 for val in x]
-# y3 = [1.0 - val**4 / 2.0 + val**8 / 24.0 for val in x]
-# y4 = [1.0 - val**4 / 2.0 + val**8 / 24.0 - val**12 / 720.0 for val in x]
-# y5 = [1.0 - val**4 / 2.0 + val**8 / 24.0 - val**12 / 720.0 + val**16 / (720.0 * 7.0 * 8.0) for val in x]
-
 # Create traces
 trace1 = go.Scatter(x=x, y=y1, mode='lines', name=r'$\cos x^2$', line=dict(color=pars.c[0], dash=pars.d[0]))
 trace2 = go.Scatter(x=x, y=y2, mode='lines', name=r'$T_1(x)$', line=dict(color=pars.c[1], dash=pars.d[1]))
@@ -32,28 +20,32 @@ trace3 = go.Scatter(x=x, y=y3, mode='lines', name=r'$T_2(x)$', line=dict(color=p
 trace4 = go.Scatter(x=x, y=y4, mode='lines', name=r'$T_3(x)$', line=dict(color=pars.c[3], dash=pars.d[3]))
 trace5 = go.Scatter(x=x, y=y5, mode='lines', name=r'$T_4(x)$', line=dict(color=pars.c[4], dash=pars.d[4]))
 
+
+
 xaxis = dict(
     title=r'$x$',
-    position=0.0,
-    showline=False,
+    position=0,
+    showline=True,
     linecolor="black",
-    ticks="outside",
+    ticks="inside",
     tickwidth=1,
     tickcolor="black",
     ticklen=5,
+    tickfont=dict(size=12),
 )
 
 yaxis = dict(
     title=r'$f(x)$',
     range=[-1, 1],
-    position=0.0,
-    showline=False,
+    position=0,
+    showline=True,
     linecolor="black",
-    ticks="outside",
+    ticks="inside",
     tickwidth=1,
     tickcolor="black",
     ticklen=5,
     tickangle=270,
+    tickfont=dict(size=12),
 )
 
 linetop = dict(
@@ -67,35 +59,13 @@ linetop = dict(
     line=dict(color="black", width=1),
 )
 
-linebottom = dict(
-    type='line',
-    xref='paper',
-    yref='paper',
-    x0=0,
-    y0=-0.004,
-    x1=1,
-    y1=-0.004,
-    line=dict(color="black", width=1),
-)
-
 lineright = dict(
     type='line',
     xref='paper',
     yref='paper',
     x0=1,
-    y0=-0.004,
+    y0=0,
     x1=1,
-    y1=1,
-    line=dict(color="black", width=1),
-)
-
-lineleft = dict(
-    type='line',
-    xref='paper',
-    yref='paper',
-    x0=0,
-    y0=-0.004,
-    x1=0,
     y1=1,
     line=dict(color="black", width=1),
 )
@@ -119,17 +89,17 @@ my_layout = go.Layout(
         itemwidth=50,
         ),
     template='plotly_white',
+    autosize=False,
     width=640,
     height=480,
+    margin=dict(l=65, r=10, t=50, b=60, pad=10),
 )
 
 # Create the figure
 fig = go.Figure(layout=my_layout)
 
 fig.add_shape(linetop)
-fig.add_shape(linebottom)
 fig.add_shape(lineright)
-fig.add_shape(lineleft)
 
 # Add traces to the figure
 fig.add_trace(trace1)
@@ -138,7 +108,10 @@ fig.add_trace(trace3)
 fig.add_trace(trace4)
 fig.add_trace(trace5)
 
-#fig.show()
+pio.write_html(fig, 'taylor.html', include_mathjax='cdn')
 
 # Export the plot as a PNG file
-pio.write_image(fig, 'taylor.png', format='png', scale=5, engine='kaleido')
+pio.write_image(fig, 'taylor.png', format='png', scale=4, engine='kaleido')
+pio.write_image(fig, 'taylor.pdf', format='pdf', scale=1, engine='kaleido')
+time.sleep(1)
+pio.write_image(fig, 'taylor.pdf', format='pdf', scale=1, engine='kaleido')
