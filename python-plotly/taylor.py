@@ -35,16 +35,25 @@ trace5 = go.Scatter(x=x, y=y5, mode='lines', name=r'$T_4(x)$', line=dict(color=p
 xaxis = dict(
     title=r'$x$',
     position=0.0,
-    showline=True,
+    showline=False,
     linecolor="black",
+    ticks="outside",
+    tickwidth=1,
+    tickcolor="black",
+    ticklen=5,
 )
 
 yaxis = dict(
     title=r'$f(x)$',
     range=[-1, 1],
     position=0.0,
-    showline=True,
+    showline=False,
     linecolor="black",
+    ticks="outside",
+    tickwidth=1,
+    tickcolor="black",
+    ticklen=5,
+    tickangle=270,
 )
 
 linetop = dict(
@@ -58,13 +67,35 @@ linetop = dict(
     line=dict(color="black", width=1),
 )
 
+linebottom = dict(
+    type='line',
+    xref='paper',
+    yref='paper',
+    x0=0,
+    y0=-0.004,
+    x1=1,
+    y1=-0.004,
+    line=dict(color="black", width=1),
+)
+
 lineright = dict(
     type='line',
     xref='paper',
     yref='paper',
     x0=1,
-    y0=0,
+    y0=-0.004,
     x1=1,
+    y1=1,
+    line=dict(color="black", width=1),
+)
+
+lineleft = dict(
+    type='line',
+    xref='paper',
+    yref='paper',
+    x0=0,
+    y0=-0.004,
+    x1=0,
     y1=1,
     line=dict(color="black", width=1),
 )
@@ -78,7 +109,15 @@ my_layout = go.Layout(
     xaxis=xaxis,
     yaxis=yaxis,
     font=dict(family='Times', size=14, color='black'),
-    legend=dict(title='', orientation='v', x=0.01, y=0.01, xanchor='left', yanchor='bottom'),
+    legend=dict(
+        title='',
+        orientation='v',
+        x=0.02,
+        y=0.01,
+        xanchor='left',
+        yanchor='bottom',
+        itemwidth=50,
+        ),
     template='plotly_white',
     width=640,
     height=480,
@@ -88,7 +127,9 @@ my_layout = go.Layout(
 fig = go.Figure(layout=my_layout)
 
 fig.add_shape(linetop)
+fig.add_shape(linebottom)
 fig.add_shape(lineright)
+fig.add_shape(lineleft)
 
 # Add traces to the figure
 fig.add_trace(trace1)
