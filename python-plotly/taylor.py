@@ -1,6 +1,5 @@
 import plotly.graph_objects as go
 import plotly.io as pio
-import pars
 import numpy as np
 import time
 
@@ -13,17 +12,45 @@ y3 = data[:, 3]
 y4 = data[:, 4]
 y5 = data[:, 5]
 
+# Array of colors in RGB format with comments for color names
+c = [
+    "rgb(68, 119, 170)",  # good blue
+    "rgb(238, 119, 51)",  # orange
+    "rgb(34, 136, 51)",   # green
+    "rgb(80, 80, 80)",    # dark gray
+    "rgb(170, 51, 119)",  # purple, cherry
+    "rgb(0, 153, 136)",   # teal
+    "rgb(204, 51, 17)",   # red
+    "rgb(102, 37, 6)",    # brown
+    "rgb(221, 170, 51)",  # good yellow
+    "rgb(102, 204, 238)", # sky blue
+    "rgb(51, 34, 136)",   # indigo, dark purple
+    "rgb(204, 187, 68)",  # lemon
+    "rgb(187, 187, 187)", # gray
+    "rgb(0, 68, 136)",    # darker blue
+    "rgb(153, 153, 51)",  # olive
+    "rgb(136, 34, 85)",   # wine
+]
+
+d = [
+    'solid',
+    'dot',
+    'dash',
+    'longdash',
+    'dashdot',
+    'longdashdot',
+]
+
 # Create traces
-trace1 = go.Scatter(x=x, y=y1, mode='lines', name=r'$\cos x^2$', line=dict(color=pars.c[0], dash=pars.d[0]))
-trace2 = go.Scatter(x=x, y=y2, mode='lines', name=r'$T_1(x)$', line=dict(color=pars.c[1], dash=pars.d[1]))
-trace3 = go.Scatter(x=x, y=y3, mode='lines', name=r'$T_2(x)$', line=dict(color=pars.c[2], dash=pars.d[2]))
-trace4 = go.Scatter(x=x, y=y4, mode='lines', name=r'$T_3(x)$', line=dict(color=pars.c[3], dash=pars.d[3]))
-trace5 = go.Scatter(x=x, y=y5, mode='lines', name=r'$T_4(x)$', line=dict(color=pars.c[4], dash=pars.d[4]))
-
-
+lwd = 3
+trace1 = go.Scatter(x=x, y=y1, mode='lines', name="cos <i>x</i><sup>2</sup>", line=dict(color=c[0], dash=d[0], width=lwd))
+trace2 = go.Scatter(x=x, y=y2, mode='lines', name="<i>T</i><sub>1</sub>(<i>x</i>)", line=dict(color=c[1], dash=d[1], width=lwd))
+trace3 = go.Scatter(x=x, y=y3, mode='lines', name="<i>T</i><sub>2</sub>(<i>x</i>)", line=dict(color=c[2], dash=d[2], width=lwd))
+trace4 = go.Scatter(x=x, y=y4, mode='lines', name="<i>T</i><sub>3</sub>(<i>x</i>)", line=dict(color=c[3], dash=d[3], width=lwd))
+trace5 = go.Scatter(x=x, y=y5, mode='lines', name="<i>T</i><sub>4</sub>(<i>x</i>)", line=dict(color=c[4], dash=d[4], width=lwd))
 
 xaxis = dict(
-    title=r'$x$',
+    title=dict(text="<i>x</i>",font=dict(family='Times', size=25, color="black")),
     position=0,
     showline=True,
     linecolor="black",
@@ -31,11 +58,16 @@ xaxis = dict(
     tickwidth=1,
     tickcolor="black",
     ticklen=5,
-    tickfont=dict(size=12),
+    tickfont=dict(family='Times', size=20, color="black"),
+    showgrid=True,
+    gridcolor='darkgrey',
+    gridwidth=1,
+    zeroline=False,
+    griddash='dot',
 )
 
 yaxis = dict(
-    title=r'$f(x)$',
+    title=dict(text="<i>f </i>(<i>x</i>)",font=dict(family='Times', size=25, color="black")),
     range=[-1, 1],
     position=0,
     showline=True,
@@ -45,7 +77,12 @@ yaxis = dict(
     tickcolor="black",
     ticklen=5,
     tickangle=270,
-    tickfont=dict(size=12),
+    tickfont=dict(family='Times', size=20, color="black"),
+    showgrid=True,
+    gridcolor='darkgrey',
+    gridwidth=1,
+    zeroline=False,
+    griddash='dot',
 )
 
 linetop = dict(
@@ -70,24 +107,27 @@ lineright = dict(
     line=dict(color="black", width=1),
 )
 
-# Define the general layout
-my_layout = go.Layout(
-    title={
-        'text': r'Приближения функции рядом Тейлора',
-        'x': 0.5,  # Center the title
-    },
-    xaxis=xaxis,
-    yaxis=yaxis,
-    font=dict(family='Times', size=14, color='black'),
-    legend=dict(
+legend = dict(
         title='',
+        font=dict(family='Times', size=22, color="black"),
         orientation='v',
         x=0.02,
-        y=0.01,
+        y=0.02,
         xanchor='left',
         yanchor='bottom',
         itemwidth=50,
-        ),
+        bgcolor='white',
+        bordercolor='black',
+        borderwidth=1,
+        indentation=7,
+)
+
+# Define the general layout
+my_layout = go.Layout(
+    title=dict(text="Приближение функции рядом Тейлора", x=0.5, font=dict(family='Times', size=22, color='black')),
+    xaxis=xaxis,
+    yaxis=yaxis,
+    legend=legend,
     template='plotly_white',
     autosize=False,
     width=640,
