@@ -2,6 +2,7 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import numpy as np
 import time
+import math_rend as mr
 
 # Read the file
 data = np.loadtxt('data/taylor.dat')
@@ -43,14 +44,14 @@ d = [
 
 # Create traces
 lwd = 3
-trace1 = go.Scatter(x=x, y=y1, mode='lines', name="cos <i>x</i><sup>2</sup>", line=dict(color=c[0], dash=d[0], width=lwd))
-trace2 = go.Scatter(x=x, y=y2, mode='lines', name="<i>T</i><sub>1</sub>(<i>x</i>)", line=dict(color=c[1], dash=d[1], width=lwd))
-trace3 = go.Scatter(x=x, y=y3, mode='lines', name="<i>T</i><sub>2</sub>(<i>x</i>)", line=dict(color=c[2], dash=d[2], width=lwd))
-trace4 = go.Scatter(x=x, y=y4, mode='lines', name="<i>T</i><sub>3</sub>(<i>x</i>)", line=dict(color=c[3], dash=d[3], width=lwd))
-trace5 = go.Scatter(x=x, y=y5, mode='lines', name="<i>T</i><sub>4</sub>(<i>x</i>)", line=dict(color=c[4], dash=d[4], width=lwd))
+trace1 = go.Scatter(x=x, y=y1, mode='lines', name=mr.html("$\\cos x^2$"), line=dict(color=c[0], dash=d[0], width=lwd))
+trace2 = go.Scatter(x=x, y=y2, mode='lines', name=mr.html("$T_1(x)$"), line=dict(color=c[1], dash=d[1], width=lwd))
+trace3 = go.Scatter(x=x, y=y3, mode='lines', name=mr.html("$T_2(x)$"), line=dict(color=c[2], dash=d[2], width=lwd))
+trace4 = go.Scatter(x=x, y=y4, mode='lines', name=mr.html("$T_3(x)$"), line=dict(color=c[3], dash=d[3], width=lwd))
+trace5 = go.Scatter(x=x, y=y5, mode='lines', name=mr.html("$T_4(x)$"), line=dict(color=c[4], dash=d[4], width=lwd))
 
 xaxis = dict(
-    title=dict(text="<i>x</i>",font=dict(family='Times', size=25, color="black")),
+    title=dict(text=mr.html("$x$"),font=dict(family='Times', size=25, color="black")),
     position=0,
     showline=True,
     linecolor="black",
@@ -67,7 +68,7 @@ xaxis = dict(
 )
 
 yaxis = dict(
-    title=dict(text="<i>f </i>(<i>x</i>)",font=dict(family='Times', size=25, color="black")),
+    title=dict(text=mr.html("$f(x)$"),font=dict(family='Times', size=25, color="black")),
     range=[-1, 1],
     position=0,
     showline=True,
