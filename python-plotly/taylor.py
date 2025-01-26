@@ -18,14 +18,14 @@ c = [
     "rgb(68, 119, 170)",  # good blue
     "rgb(238, 119, 51)",  # orange
     "rgb(34, 136, 51)",   # green
-    "rgb(80, 80, 80)",    # dark gray
-    "rgb(170, 51, 119)",  # purple, cherry
-    "rgb(0, 153, 136)",   # teal
-    "rgb(204, 51, 17)",   # red
-    "rgb(102, 37, 6)",    # brown
-    "rgb(221, 170, 51)",  # good yellow
-    "rgb(102, 204, 238)", # sky blue
     "rgb(51, 34, 136)",   # indigo, dark purple
+    "rgb(204, 51, 17)",   # red
+    "rgb(0, 153, 136)",   # teal
+    "rgb(221, 170, 51)",  # good yellow
+    "rgb(80, 80, 80)",    # dark gray
+    "rgb(102, 37, 6)",    # brown
+    "rgb(102, 204, 238)", # sky blue
+    "rgb(170, 51, 119)",  # purple, cherry
     "rgb(204, 187, 68)",  # lemon
     "rgb(187, 187, 187)", # gray
     "rgb(0, 68, 136)",    # darker blue
@@ -37,12 +37,11 @@ c1 = [
     "#377EB8", # blue
     "#FF7F00", # orange
     "#4DAF4A", # green
-    "#F781BF", # pink
-    "#A65628", # brown
     "#984EA3", # purple
-    "#FFFF33", # yellow
     "#E41A1C", # red
+    "#A65628", # brown
     "#999999", # grey
+    "#F781BF", # pink
     "#A6CEE3", # cyan
 ]
 
@@ -57,11 +56,11 @@ d = [
 
 # Create traces
 lwd = 3
-trace1 = go.Scatter(x=x, y=y1, mode='lines', name=mr.html("$\\cos x^2$"), line=dict(color=c1[0], dash=d[0], width=lwd))
-trace2 = go.Scatter(x=x, y=y2, mode='lines', name=mr.html("$T_1(x)$"), line=dict(color=c1[1], dash=d[1], width=lwd))
-trace3 = go.Scatter(x=x, y=y3, mode='lines', name=mr.html("$T_2(x)$"), line=dict(color=c1[2], dash=d[2], width=lwd))
-trace4 = go.Scatter(x=x, y=y4, mode='lines', name=mr.html("$T_3(x)$"), line=dict(color=c1[3], dash=d[3], width=lwd))
-trace5 = go.Scatter(x=x, y=y5, mode='lines', name=mr.html("$T_4(x)$"), line=dict(color=c1[4], dash=d[4], width=lwd))
+trace1 = go.Scatter(x=x, y=y1, mode='lines', name=mr.html("$\\cos x^2$"), line=dict(color=c[0], dash=d[0], width=lwd))
+trace2 = go.Scatter(x=x, y=y2, mode='lines', name=mr.html("$T_1(x)$"), line=dict(color=c[1], dash=d[1], width=lwd))
+trace3 = go.Scatter(x=x, y=y3, mode='lines', name=mr.html("$T_2(x)$"), line=dict(color=c[2], dash=d[2], width=lwd))
+trace4 = go.Scatter(x=x, y=y4, mode='lines', name=mr.html("$T_3(x)$"), line=dict(color=c[3], dash=d[3], width=lwd))
+trace5 = go.Scatter(x=x, y=y5, mode='lines', name=mr.html("$T_4(x)$"), line=dict(color=c[4], dash=d[4], width=lwd))
 
 xaxis = dict(
     title=dict(text=mr.html("$x$"),font=dict(family='Times', size=25, color="black")),
