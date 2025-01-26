@@ -20,14 +20,14 @@ c = [
     (68, 119, 170),  # good blue
     (238, 119, 51),  # orange
     (34, 136, 51),   # green
+    (51, 34, 136),   # indigo, dark purple
+    (204, 51, 17),   # red
+    (0, 153, 136),   # teal
+    (221, 170, 51),  # good yellow
     (80, 80, 80),    # dark gray
     (170, 51, 119),  # purple, cherry
-    (0, 153, 136),   # teal
-    (204, 51, 17),   # red
     (102, 37, 6),    # brown
-    (221, 170, 51),  # good yellow
     (102, 204, 238), # sky blue
-    (51, 34, 136),   # indigo, dark purple
     (204, 187, 68),  # lemon
     (187, 187, 187), # gray
     (0, 68, 136),    # darker blue
@@ -36,31 +36,49 @@ c = [
     (0, 0, 0),       # black
 ]
 
-def col(i):
-    return tuple(rgb / 255 for rgb in c[i-1])
+# Dash types
+d = [
+    'solid',
+    'dashed',
+    'dotted',
+    'dashdot',
+    (5, (10, 3)),
+]
 
-# Generate some example data
-x = np.linspace(0, 10, 100)
-y1 = np.sin(x)
-y2 = np.cos(x)
+def col(i):
+    return tuple(rgb / 255 for rgb in c[i])
+
+# Read the file
+data = np.loadtxt('data/taylor.dat')
+x = data[:, 0]
+y1 = data[:, 1]
+y2 = data[:, 2]
+y3 = data[:, 3]
+y4 = data[:, 4]
+y5 = data[:, 5]
 
 # Create a figure with custom size and layout
-fig, ax = plt.subplots(figsize=(6, 5))  # Figure size in inches (width, height)
+fig, ax = plt.subplots(figsize=(6.4, 4.8))  # Figure size in inches (width, height)
 
 # Plot the data
-ax.plot(x, y1, label=r'$\sin(x)$', color=col(1), linestyle='-', linewidth=2, marker='o', markersize=4)
-ax.plot(x, y2, label=r'$\cos(x)$', color=col(2), linestyle='--', linewidth=2, marker='s', markersize=4)
+ax.plot(x, y1, label=r'$\cos x^2$', color=col(0), linestyle=d[0], linewidth=2, markersize=4)
+ax.plot(x, y2, label=r'$T_1(x)$', color=col(1), linestyle=d[1], linewidth=2, markersize=4)
+ax.plot(x, y3, label=r'$T_2(x)$', color=col(2), linestyle=d[2], linewidth=2, markersize=4)
+ax.plot(x, y4, label=r'$T_3(x)$', color=col(3), linestyle=d[3], linewidth=2, markersize=4)
+ax.plot(x, y5, label=r'$T_4(x)$', color=col(4), linestyle=d[4], linewidth=2, markersize=4)
 
 # Customize the axes
-ax.set_xlabel('Подпись оси X', fontsize=14, fontweight='normal', labelpad=10)
-ax.set_ylabel('Подпись оси Y', fontsize=14, fontweight='normal', labelpad=10)
-ax.set_title('График с заданным стилем', fontsize=16, fontweight='normal', pad=15)
+ax.set_xlabel(r'$x$', fontsize=14, fontweight='normal', labelpad=10)
+ax.set_ylabel(r'$f(x)$', fontsize=14, fontweight='normal', labelpad=10)
+ax.set_title('Приближение функции рядом Тейлора', fontsize=16, fontweight='normal', pad=15)
 ax.tick_params(axis='both', which='major', labelsize=12, length=6, width=1.5)
 ax.grid(True, which='both', linestyle='dotted', linewidth=1, alpha=1)
-plt.tick_params(axis='both', width=1)
+plt.tick_params(axis='both', width=1, length=4, direction='in')
+plt.tick_params(axis='y', labelrotation=90)
+plt.ylim(-1,1)
 
 # Add a legend
-ax.legend(fontsize=14, loc='lower left', frameon=True, framealpha=1, fancybox=True, edgecolor='black')
+ax.legend(fontsize=14, loc='lower left', frameon=True, framealpha=1, fancybox=True, edgecolor='black', borderaxespad=1)
 
 # Adjust subplot parameters for better spacing
 plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1, hspace=0.3, wspace=0.3)

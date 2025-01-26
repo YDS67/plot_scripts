@@ -47,10 +47,10 @@ c1 = [
 
 d = [
     'solid',
-    'dot',
     'dash',
-    'longdash',
+    'dot',
     'dashdot',
+    'longdash',
     'longdashdot',
 ]
 
